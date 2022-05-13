@@ -8,7 +8,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup WINE
-        run: brew install wine --devel
+        run: brew install wine
       - name: Hello world action step
         uses: ./
         id: innostup
