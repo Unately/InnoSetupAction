@@ -1,0 +1,15 @@
+name: 'InnoSetup Builder'
+description: 'An action for building your InnoSetup.'
+inputs:
+  file:  # id of input
+    description: 'The .iss file to build.'
+    required: true
+  build-name:
+    description: 'The name of the output file.'
+    required: true
+outputs:
+  inno-output: # id of output
+    description: 'The File name of your build name.'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'

@@ -1,0 +1,20 @@
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: Test Job
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Hello world action step
+        uses: ./
+        id: innostup
+        with:
+          file: 'InnoScript.iss'
+          build-name: 'FinishedBuild'
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.0.0
+        with:
+          name: my-artifact
+          path: ${{ steps.innostup.outputs.inno-output }}
