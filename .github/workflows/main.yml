@@ -2,7 +2,7 @@ on: [push]
 
 jobs:
   hello_world_job:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     name: Test Job
     steps:
       - name: Checkout
@@ -10,12 +10,8 @@ jobs:
       - name: Setup WINE
         run: |
           sudo dpkg --add-architecture i386
-          wget -nc https://dl.winehq.org/wine-builds/winehq.key
-          sudo mv winehq.key /usr/share/keyrings/winehq-archive.key
-          wget -nc https://dl.winehq.org/wine-builds/ubuntu/dists/focal/winehq-focal.sources
-          sudo mv winehq-focal.sources /etc/apt/sources.list.d/
-          sudo apt update
-          sudo apt install --install-recommends winehq-stable
+          brew tap homebrew/cask-versions
+          brew install --cask --no-quarantine wine-stable
       - name: Hello world action step
         uses: ./
         id: innostup
