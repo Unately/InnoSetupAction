@@ -11,5 +11,7 @@ outputs:
   inno-output: # id of output
     description: 'The File name of your build name.'
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.file }}
