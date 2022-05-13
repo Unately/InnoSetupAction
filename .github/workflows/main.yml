@@ -9,8 +9,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup WINE
         run: |
-          sudo apt-get install wine-stable 
-          sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get install wine32 
+          sudo apt-get install wine-stable
       - name: Hello world action step
         uses: ./
         id: innostup
