@@ -9,13 +9,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup WINE
         run: |
-          sudo dpkg --add-architecture i386
-          wget -nc https://dl.winehq.org/wine-builds/winehq.key
-          sudo mv winehq.key /usr/share/keyrings/winehq-archive.key
-          wget -nc https://dl.winehq.org/wine-builds/ubuntu/dists/focal/winehq-focal.sources
-          sudo mv winehq-focal.sources /etc/apt/sources.list.d/
-          sudo apt update
-          sudo apt install --install-recommends wine-stable-amd64 
+          sudo apt-get install wine-stable 
+          sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get install wine32 
       - name: Hello world action step
         uses: ./
         id: innostup
